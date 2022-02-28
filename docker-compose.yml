@@ -1,0 +1,14 @@
+version: "3"
+services:
+  starsiegetribes:
+    container_name: "starsiegetribes"
+    build:
+      context: "./"
+    volumes:
+      - "/var/containers/tribes:/data"
+    network_mode: host
+    ports:
+      - "28001:28001"
+    environment:
+      - SERVER_IP=192.168.1.214
+

@@ -1,0 +1,12 @@
+$Server::Address = "IP:127.0.0.1:28001";
+$Server::Port = "28001";
+$AdminPassword = "HaHaDontKidYourself";
+$Server::Game = "Tribes";
+$Server::HostName = "Docker Tribes Server";
+$Console::LogMode = "1";
+$pref::PacketRate = "10";
+$pref::PacketSize = "200";
+$Server::MaxPlayers = "16";
+$Server::TimeLimit = "20";
+$teamScoreLimit = "0";
+Server::loadMission("Raindance");
