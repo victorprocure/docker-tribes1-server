@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 RUN apt update \
-    && apt install -y wget gnupg2 xvfb zstd cabextract;
+    && apt install -y wget gnupg2 xvfb zstd cabextract unzip;
 
 RUN dpkg --add-architecture i386 \
     && wget -qO- https://dl.winehq.org/wine-builds/winehq.key | gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/winehq.gpg --import \
@@ -13,16 +13,16 @@ ENV WINEARCH=win32 \
     WINEPREFIX=/root/.win32 \
     W_OPT_UNATTENDED=true
 
-ENV RETRO_TRIBES_INSTALLER_URL http://www.iateyourbaby.com/twdemos/Groove/full_installs/retro_141_installerv2.exe
-ENV RETRO_TRIBES_INSTALLER_SHA256 5FF657631D22FE497FCE096F2E39ADF327E23A37F386D8062DCC4BE150151581
-ENV RETRO_TRIBES_INSTALLER_FILE /root/tribes_installer.exe
+ENV RETRO_TRIBES_INSTALLER_URL http://www.playspoon.com/downloads/Tribes/tribes_1.30_fullgame.zip
+ENV RETRO_TRIBES_INSTALLER_SHA256 4CBB220483CFE898F9D1D645F870E739AE1A0323A9FDAF63CEE3408BC2B48BA2
+ENV RETRO_TRIBES_INSTALLER_FILE /root/tribes_installer.zip
 
 RUN wget -O "$RETRO_TRIBES_INSTALLER_FILE" $RETRO_TRIBES_INSTALLER_URL \
       && echo "$RETRO_TRIBES_INSTALLER_SHA256 *$RETRO_TRIBES_INSTALLER_FILE" | sha256sum -c -
 
-RUN winecfg
-
 VOLUME ["/data"]
+
+RUN winecfg
 RUN ln -s /data /root/.win32/dosdevices/d:
 
 RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \

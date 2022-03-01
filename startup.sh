@@ -8,13 +8,13 @@ export WINEPREFIX=/root/.win32
 
 Xvfb :0 -screen 0 1024x768x16 &
 
-if [ ! -d "/data/tribes" ];  then
-	DISPLAY=:0.0 wine "/root/tribes_installer.exe" "/S" "/D=d:\\tribes"
-cp /root/serverConfig.cs /data/tribes/config/serverConfig.cs
+if [ ! -d "/data/Tribes" ];  then
+unzip /root/tribes_installer.zip -d /data
+cp /root/serverConfig.cs /data/Tribes/config/serverConfig.cs
 fi
 
-sed -i "s/127.0.0.1/$SERVER_IP/" /data/tribes/config/serverConfig.cs
+sed -i "s/127.0.0.1/$SERVER_IP/" /data/Tribes/config/serverConfig.cs
 
-DISPLAY=:0.0 wine start /d "d:\\tribes" "d:\\tribes\\Tribes.exe" "+exec serverConfig.cs" "-dedicated"
+DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec serverConfig.cs +exec spoonbot.cs -dedicated
 
 tail -f /dev/null
