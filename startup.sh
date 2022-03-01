@@ -9,12 +9,9 @@ Xvfb :0 -screen 0 1024x768x16 &
 
 if [ ! -d "/data/Tribes" ];  then
   unzip /root/tribes_installer.zip -d /data
-  cp -f /root/serverConfig.cs $serverConfig
 fi
 
-if [ ! -f $serverConfig ] || [ "/root/serverConfig.cs" -nt $serverConfig ]; then
   cp -f /root/serverConfig.cs $serverConfig
-fi
 
 #BEGIN SET Server Config
 sed -i "s/#ServerAddress#/$ServerAddress/" $serverConfig
