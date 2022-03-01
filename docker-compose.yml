@@ -7,8 +7,8 @@ services:
     volumes:
       - "/var/containers/tribes:/data"
     network_mode: host
+    environment:
+      - ServerHostName="Play with bots"
     ports:
       - "28001:28001"
-    environment:
-      - SERVER_IP=192.168.1.214
 
