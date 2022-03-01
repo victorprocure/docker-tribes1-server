@@ -3,7 +3,7 @@ $Server::Port = "#ServerPort#";
 $AdminPassword = "#ServerAdminPassword#";
 $Server::Game = "Tribes";
 $Server::HostName = "#ServerHostName#";
-$Server::Info = "#ServerInfo#"
+$Server::Info = "#ServerInfo#";
 
 $Server::MaxPlayers = "#ServerMaxPlayers#";
 $Server::TimeLimit = "#ServerTimeLimit#";
