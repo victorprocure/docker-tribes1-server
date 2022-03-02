@@ -9,6 +9,7 @@ services:
     network_mode: host
     environment:
       - ServerHostName=Play with bots
+      - InstallRenegades=1
     ports:
       - "28001:28001"
 

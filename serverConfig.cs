@@ -39,4 +39,5 @@ $Server::XLMasterN3 = "IP:173.27.38.102:28000";
 $pref::PacketRate = "#PacketRate#";
 $pref::PacketSize = "#PacketSize#";
 
-Server::loadMission("Raindance");
+MissionList::initNextMission(); 
+$pref::lastMission = "broadside"; 

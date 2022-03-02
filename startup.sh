@@ -11,6 +11,12 @@ if [ ! -d "/data/Tribes" ];  then
   unzip /root/tribes_installer.zip -d /data
 fi
 
+if [ "$InstallRenegades" -eq 1 ] && [ ! -d "/data/Tribes/Renegades" ]; then
+  wget --no-check-certificate -O /tmp/renegades.zip \
+    "https://drive.google.com/uc?export=download&id=1LxarQoL2HFiR-3ulHJk8dhkXvCwYBxBF"
+  unzip -o /tmp/renegades.zip -d /data
+fi
+
   cp -f /root/serverConfig.cs $serverConfig
 
 #BEGIN SET Server Config
@@ -27,6 +33,9 @@ sed -i "s/#PacketSize#/$PacketSize/" $serverConfig
 sed -i "s/#PacketRate#/$PacketRate/" $serverConfig
 #END SET Server Config
 
-DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec serverConfig.cs +exec spoonbot.cs -dedicated
-
+if [ "$InstallRenegades" -eq 1 ]; then
+  DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod Renegades5 -mod spoonbot_13 +exec spoonbot.cs +exec renegades.cs +exec serverConfig.cs -dedicated
+else
+  DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec serverConfig.cs +exec spoonbot.cs -dedicated
+fi
 tail -f /dev/null

@@ -49,5 +49,7 @@ ENV ServerAddress="LOOPBACK:28001" \
     PacketRate="15"
 #END Server Configuration Variables
 
+ENV InstallRenegades 0
+
 ENTRYPOINT [ "sh" ]
 CMD ["/root/startup.sh"]
