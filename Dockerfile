@@ -22,19 +22,6 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
     && chmod +x winetricks \
     && sh winetricks corefonts dxvk
 
-ARG RETRO_TRIBES_INSTALLER_URL=http://www.playspoon.com/downloads/Tribes/tribes_1.30_fullgame.zip
-ARG RETRO_TRIBES_INSTALLER_SHA256=4CBB220483CFE898F9D1D645F870E739AE1A0323A9FDAF63CEE3408BC2B48BA2
-ENV RETRO_TRIBES_INSTALLER_FILE /root/tribes_installer.zip
-
-RUN wget -O "$RETRO_TRIBES_INSTALLER_FILE" $RETRO_TRIBES_INSTALLER_URL \
-      && echo "$RETRO_TRIBES_INSTALLER_SHA256 *$RETRO_TRIBES_INSTALLER_FILE" | sha256sum -c -
-
-EXPOSE 28001/udp 28001/tcp
-
-COPY serverConfig.cs /root/serverConfig.cs
-COPY startup.sh /root/startup.sh
-RUN chmod gou+x /root/startup.sh
-
 #BEGIN Server Configuration Variables
 ENV ServerAddress="LOOPBACK:28001" \
     ServerPort="28001" \
@@ -50,6 +37,23 @@ ENV ServerAddress="LOOPBACK:28001" \
 #END Server Configuration Variables
 
 ENV InstallRenegades 0
+ENV InstallSpoonbot 0
+
+ARG RETRO_TRIBES_GDRIVE_ID="15j9PWPFFBJ6Rk0yaSTMIyHro9WEDTFJe" \
+    RETRO_TRIBES_INSTALLER_SHA256=98425295B40A755BF926F80D72E73360D0269BBC34FA8B8A3520DA4F5D6F2258
+ENV RETRO_TRIBES_INSTALLER_FILE /root/tribes_installer.zip
+ENV SPOONBOT_GDRIVE_ID="1Uw0JoAbBlMewdAJ2nrXwU4Go6inb-HqL" \
+    RENEGADES_GDRIVE_ID="1CiaF7LSQiymSkGw_wAqI1XZgWRdqidjz"
+
+RUN wget -O $RETRO_TRIBES_INSTALLER_FILE --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=$RETRO_TRIBES_GDRIVE_ID" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$RETRO_TRIBES_GDRIVE_ID" \
+      && rm -rf /tmp/cookies.txt \
+      && echo "$RETRO_TRIBES_INSTALLER_SHA256 *$RETRO_TRIBES_INSTALLER_FILE" | sha256sum -c -
+
+EXPOSE 28001/udp 28001/tcp
+
+COPY serverConfig.cs /root/serverConfig.cs
+COPY startup.sh /root/startup.sh
+RUN chmod gou+x /root/startup.sh
 
 ENTRYPOINT [ "sh" ]
 CMD ["/root/startup.sh"]

@@ -10,6 +10,7 @@ services:
     environment:
       - ServerHostName=Play with bots
       - InstallRenegades=1
+      - InstallSpoonbot=1
     ports:
       - "28001:28001"
 
