@@ -45,12 +45,11 @@ sed -i "s/#PacketRate#/$PacketRate/" $serverConfig
 #END SET Server Config
 
 if [ "$InstallRenegades" -eq 1 ] && [ "$InstallSpoonbot" -eq 1 ]; then
-  DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod Renegades5 -mod spoonbot_13 +exec spoonbot.cs +exec renegades.cs +exec serverConfig.cs -dedicated
+  DISPLAY=:0.0 wine start /d "d:\\Tribes" "z:\\root\\logdirect-x86\\LogRedirect.exe" "d:\\Tribes\\Tribes.exe" -mod Renegades5 -mod spoonbot_13 +exec spoonbot.cs +exec renegades.cs +exec serverConfig.cs -dedicated
 elif [ "$InstallRenegades" -eq 1 ] && [ ! "$InstallSpoonbot" -eq 1 ]; then
-  DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod Renegades5 +exec renegades.cs +exec serverConfig.cs -dedicated
+  DISPLAY=:0.0 wine start /d "d:\\Tribes" "z:\\root\\logdirect-x86\\LogRedirect.exe" "d:\\Tribes\\Tribes.exe" -mod Renegades5 +exec renegades.cs +exec serverConfig.cs -dedicated
 elif [ ! "$InstallRenegades" -eq 1 ] && [ "$InstallSpoonbot" -eq 1 ]; then
-  DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec spoonbot.cs +exec serverConfig.cs -dedicated
+  DISPLAY=:0.0 wine start /d "d:\\Tribes" "z:\\root\\logdirect-x86\\LogRedirect.exe" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec spoonbot.cs +exec serverConfig.cs -dedicated
 else
-  DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec serverConfig.cs +exec spoonbot.cs -dedicated
+  DISPLAY=:0.0 wine start /d "d:\\Tribes" "z:\\root\\logdirect-x86\\LogRedirect.exe" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec serverConfig.cs +exec spoonbot.cs -dedicated
 fi
-tail -f /dev/null
