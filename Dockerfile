@@ -70,9 +70,6 @@ RUN wget -O $RETRO_TRIBES_INSTALLER_FILE --load-cookies /tmp/cookies.txt "https:
       && rm -rf /tmp/cookies.txt \
       && echo "$RETRO_TRIBES_INSTALLER_SHA256 *$RETRO_TRIBES_INSTALLER_FILE" | sha256sum -c -
 
-RUN wget -O /root/logredirect.zip https://github.com/victorprocure/LogRedirect/releases/download/v1.0.0/logdirect-x86.zip \
-      && unzip /root/logredirect.zip -d /root/
-
 EXPOSE 28001/udp 28001/tcp
 
 COPY serverConfig.cs /root/serverConfig.cs

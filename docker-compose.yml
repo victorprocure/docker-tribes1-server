@@ -1,6 +1,8 @@
 version: "3"
 services:
   starsiegetribes:
+    stdin_open: true
+    tty: true
     container_name: "starsiegetribes"
     build:
       context: "./"
