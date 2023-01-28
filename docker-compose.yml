@@ -6,11 +6,9 @@ services:
       context: "./"
     volumes:
       - "/var/containers/tribes:/data"
-    network_mode: host
     environment:
       - ServerHostName=Play with bots
       - InstallRenegades=1
       - InstallSpoonbot=1
-    ports:
-      - "28001:28001"
+    network_mode: "host"
 
