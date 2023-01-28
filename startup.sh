@@ -53,4 +53,5 @@ elif [ ! "$InstallRenegades" -eq 1 ] && [ "$InstallSpoonbot" -eq 1 ]; then
 else
   DISPLAY=:0.0 wine start /d "d:\\Tribes" "d:\\Tribes\\Tribes.exe" -mod spoonbot_13 +exec serverConfig.cs +exec spoonbot.cs -dedicated
 fi
-tail -f /dev/null
+
+tail -f /data/Tribes/console.log

@@ -22,19 +22,13 @@ $Server::AntiRape::minTeamSize = "8";
 
 $Server::HostPublicGame = "#ServerPublicGame#";
 $Server::CurrentMaster = "1";
-$Server::Master1 = "t1m1.pu.net:28000";
-$Server::MasterAddressN0 = "t1m1.pu.net:28000";
-$Server::MasterAddressN1 = "t1m1.tribes1.co:28000";
-$Server::MasterAddressN2 = "tribes.lock-load.org:28000";
-$Server::MasterAddressN3 = "t1m1.tribes0.com:28000";
-$Server::MasterName0 = "bugs_";
-$Server::MasterName1 = "kigen";
-$Server::MasterName2 = "lock-load";
-$Server::MasterName3 = "plasmatic";
-$Server::XLMasterN0 = "IP:74.117.210.42:28000";
-$Server::XLMasterN1 = "IP:198.50.214.196:28000";
-$Server::XLMasterN2 = "IP:72.54.15.111:28000";
-$Server::XLMasterN3 = "IP:173.27.38.102:28000";
+$Server::Master1 = "t1m1.tribes1.co";
+$Server::MasterAddressN0 = "t1m2.tribes1.co";
+$Server::MasterAddressN1 = "t1m3.tribes1.co";
+$Server::MasterName0 = "kigen1";
+$Server::MasterName1 = "kigen2";
+$Server::MasterName2 = "kigen3";
+$Server::XLMasterN0 = "IP:15.204.204.222:28000";
 
 $pref::PacketRate = "#PacketRate#";
 $pref::PacketSize = "#PacketSize#";
