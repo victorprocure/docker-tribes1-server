@@ -31,6 +31,8 @@ fi
   cp -f /root/serverConfig.cs $serverConfig
 
 #BEGIN SET Server Config
+CPU_VENDOR=$(lscpu | sed -n 's/Vendor ID:[ \t]*//p')
+CPU_MHZ=$(lscpu | sed -n 's/CPU max MHz:[ \t]*//p')
 sed -i "s/#ServerAddress#/$ServerAddress/" $serverConfig
 sed -i "s/#ServerPort#/$ServerPort/" $serverConfig
 sed -i "s|#ServerAdminPassword#|$ServerAdminPassword|" $serverConfig
@@ -42,6 +44,8 @@ sed -i "s/#ServerTeamScoreLimit#/$ServerTeamScoreLimit/" $serverConfig
 sed -i "s/#ServerPublicGame#/$ServerPublicGame/" $serverConfig
 sed -i "s/#PacketSize#/$PacketSize/" $serverConfig
 sed -i "s/#PacketRate#/$PacketRate/" $serverConfig
+sed -i "s/#CPUVendor#/$CPU_VENDOR/" $serverConfig
+sed -i "s/#CPUMHz#/$CPU_MHZ/" $serverConfig
 #END SET Server Config
 
 if [ "$InstallRenegades" -eq 1 ] && [ "$InstallSpoonbot" -eq 1 ]; then

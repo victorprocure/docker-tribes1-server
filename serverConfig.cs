@@ -4,6 +4,8 @@ $AdminPassword = "#ServerAdminPassword#";
 $Server::Game = "Tribes";
 $Server::HostName = "#ServerHostName#";
 $Server::Info = "#ServerInfo#";
+$CPU::Vendor = "#CPUVendor#";
+$CPU:MHz = "#CPUMHz#";
 
 $Server::MaxPlayers = "#ServerMaxPlayers#";
 $Server::TimeLimit = "#ServerTimeLimit#";
